@@ -14,7 +14,7 @@ class HomeController extends AbstractController {
        * @return void
        */
      public function hello($prenom = "anonyme"){
-          return new Response("hello puta" .$prenom );
+          return new Response("hello" .$prenom );
      }
    
      /**
@@ -24,7 +24,7 @@ class HomeController extends AbstractController {
     public function home(){
        return $this->render(
             'home.html.twig',
-            ['title' => "bonjour zin"]
+            ['title' => "Welecom to my website"]
        );
     }
 
