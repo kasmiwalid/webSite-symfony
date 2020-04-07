@@ -24,7 +24,7 @@
             {{ ad.content | raw }}
 
 
-                                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
                              {% for image in ad.images %}
                             <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}" {% if 
@@ -32,20 +32,19 @@
                              {% endfor %}   
 
                         </ol>
-                        <div class="carousel-inner">
-                           {% for image in ad.images %}
+                            <div class="carousel-inner">
+                            {% for image in ad.images %}
 
-                            <div class="carousel-item {% if loop.first %} active{% endif %}">
-                            <img src="..." class="d-block w-100" src="{{ image.url }}" alt="First
-                            slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>{{ ad.title }}</h5>
-                                    <p>{{ image.caption }}</p>
+                                <div class="carousel-item {% if loop.first %} active{% endif %}">
+                                <img src="..." class="d-block w-100" src="{{ image.url }}" alt="First
+                                slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>{{ ad.title }}</h5>
+                                        <p>{{ image.caption }}</p>
+                                    </div>
                                 </div>
+                                {% endfor %}
                             </div>
-                            {% endfor %}
-                            
-                        </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
@@ -54,28 +53,25 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
-                        </div>
+                 </div>
         </div>
   
         <div class="col">
-            <div class="row">
-                    <div class="col-4">
-                        <img src="http://placehold.it/64x64" alt="Avatar de Joseph">
+            {% set a = ad.author %}
+            <div class="row mb-3 align-items-center">
+                    <div class="col-3">
+                    <a href="{{path('user_show', {'slug': a.slug}) }}">
+                        <img src="{{a.picture}}" class="avatar avatar-medium" alt="Avatar de {{a.fullName}}">
+                    </a>
                     </div>
                     <div class="col">
-                        <h3>Joseph Dupont</h3>
-                        <span class="badge badge-primary">3 annonces</span>
+                        <a href="{{path('user_show', {'slug': a.slug}) }}">
+                          <h3>{{a.fullName}}</h3>
+                        </a>
+                        <span class="badge badge-primary">{{a.ads | length}} annonces</span>
                     </div>
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-             Velit aliquid nostrum cum quos dolore blanditiis natus
-              eligendi sed similique ipsum?</p>
-            <p>Assumenda vel cumque in perspiciatis velit possimus 
-            dolorum minima ipsa totam placeat, id, debitis 
-            nulla ipsam quae temporibus sequi fuga.</p>
-            <p>Molestiae voluptates saepe quasi voluptate! 
-            A animi vero labore aspernatur delectus maiores sed pariatur libero.
-             Labore sed praesentium cumque error.</p>
+            {{a.description | raw}}
         </div>    
   </div>
 </div>
