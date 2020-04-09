@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 use App\Entity\Ad;
 use Faker\Factory;
 
+use App\Entity\Role;
 use App\Entity\User;
 use App\Entity\Image;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -21,7 +22,27 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $faker = Factory::create('FR-fr');
+        $faker = Factory::create('fr-FR');
+
+        //new role admin
+        $adminRole = new Role();
+        $adminRole->setTitle('ROLE_ADMIN');
+        $manager->persist($adminRole);  
+
+        //new utilisateur avec un role admin
+        $adminUser = new User();
+        $adminUser->setFirstName('Walid')
+                  ->setLastName('Kasmi')
+                  ->setEmail('kasmiwalid25@gmail.com')
+                  ->setHash($this->encoder->encodePassword($adminUser, 'password'))
+                  ->setPicture('https://pbs.twimg.com/media/CsqzMG6XgAAet7A?format=jpg&name=small')
+                  ->setIntroduction($faker->sentence())
+                  ->setDescription( '<p>' . join('</p><p>', $faker->paragraphs(3)) . '</p>')
+                  ->addUserRole($adminRole);
+        $manager->persist($adminUser);
+
+
+
         //Nous gérons les utilisateurs
         $users = [];
         $genres = ['male', 'female'];
@@ -72,14 +93,14 @@ class AppFixtures extends Fixture
            ->setCoverImage($coverImage)
            ->setIntroduction($introduction)
            ->setContent($content)
-           ->setPrice(mt_rand(40, 200))
+           ->setPrice(mt_rand(40, 200)) 
            ->setRooms(mt_rand(1 ,5))
            ->setAuthor($user);
 
 
            for($j = 1; $j <= mt_rand(2, 5); $j++){
                $image = new Image();
-               $image->setUrl($faker->sentence())
+               $image->setUrl($faker->imageUrl())
                      ->setCaption($faker->sentence())
                      ->setAd($ad);
 

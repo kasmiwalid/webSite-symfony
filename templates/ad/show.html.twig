@@ -15,6 +15,13 @@
            </strong> par nuit
         </p>
         <a href="#" class="btn btn-primary">Réserver !</a>
+
+        {% if app.user and app.user == ad.author %}
+              <a href="{{ path('ads_edit', {'slug' : ad.slug}) }}" class="btn btn-secondary">Modifier l'annonce</a>
+
+              <a href="{{ path('ads_delete', {'slug' : ad.slug}) }}" class="btn btn-danger"
+              onclick="return confirm(`Etes vous sur de vouloir supprimer l'annonce : {{ad.title}} ?`)">Supprimer l'annonce</a>
+        {% endif %}
     </div>
 </div>
 
@@ -26,17 +33,22 @@
 
                   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-                             {% for image in ad.images %}
-                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}" {% if 
-                            loop.first %} class="active" {% endif %} ></li>
-                             {% endfor %}   
-
+                            
+                            {% for image in ad.images %}
+                           {# {% dump(image) %} #}
+                                <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}" 
+                                {% if loop.first %} 
+                                    class="active" 
+                                {% endif %}>
+                                
+                                </li>
+                            {% endfor %}   
                         </ol>
                             <div class="carousel-inner">
                             {% for image in ad.images %}
 
                                 <div class="carousel-item {% if loop.first %} active{% endif %}">
-                                <img src="..." class="d-block w-100" src="{{ image.url }}" alt="First
+                                <img  class="d-block w-100" src="{{ image.url }}" alt="First
                                 slide">
                                     <div class="carousel-caption d-none d-md-block">
                                         <h5>{{ ad.title }}</h5>
