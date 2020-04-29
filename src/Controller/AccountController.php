@@ -25,7 +25,7 @@ class AccountController extends AbstractController
      * 
      * @return Response
      */
-    public function login(AuthenticationUtils  $utils)
+    public function login(AuthenticationUtils $utils)
     {
         $error = $utils->getLastAuthenticationError();  
         $username = $utils->getLastUsername();

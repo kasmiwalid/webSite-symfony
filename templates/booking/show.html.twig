@@ -6,11 +6,11 @@
 {% set author = ad.author %}
 
 <div class="container">
-    <h1>Votre réservation (n°{{booking.id}})</h1>
+    <h1 class="my-5"><i class="far fa-check-square"></i> Votre réservation (n°{{booking.id}})</h1>
 
     {% if app.request.query.get('withAlert') %}
         <div class="alert alert-success">
-            <h4 class="alert-heading">Bravo !</h4>
+            <h4 class="alert-heading"><i class="far fa-check-circle"></i> Bravo !</h4>
             <p>
                 Votre réservation auprès de
                 <strong>
@@ -20,7 +20,7 @@
                 <strong>
                     <a href="{{ path("ads_show", {'slug': ad.slug})}}">{{ad.title}}</a>
                 </strong>
-                a bien  été prise en compte !
+                a bien  été prise en compte !<i class="far fa-smile-beam"></i>
             </p>
 
         </div>
@@ -30,24 +30,24 @@
     <div class="row">
         <div class="col">
             <div class="alert alert-light">
-               <h2 class="alert-heading">Détails</h2><br>
+               <h2 class="alert-heading"><i class="fas fa-file-alt"></i> Détails</h2><br>
                 <dl class="row">
-                    <dt class="col-md-4">Numéro</dt>
+                    <dt class="col-md-4"><i class="fas fa-laptop-house"></i> Numéro</dt>
                     <dd class="col-md-8">{{booking.id}}</dd>
-                    <dt class="col-md-4">Date d'arrivée</dt>
+                    <dt class="col-md-4"><i class="fas fa-calendar-day"></i> Date d'arrivée</dt>
                     <dd class="col-md-8">{{booking.startDate | date('d/m/y')}}</dd>
-                    <dt class="col-md-4">Date de départ</dt>
+                    <dt class="col-md-4"><i class="fas fa-calendar-day"></i> Date de départ</dt>
                     <dd class="col-md-8">{{booking.endDate | date('d/m/y')}}</dd>
-                    <dt class="col-md-4">Nombre de nuits</dt>
+                    <dt class="col-md-4"><i class="fas fa-home"></i> Nombre de nuits</dt>
                     <dd class="col-md-8">{{booking.duration}}</dd>
-                    <dt class="col-md-4">Montant total</dt>
-                    <dd class="col-md-8">{{booking.amount}} &euro;</dd>
-                    <dt class="col-md-4">Commentaire</dt>
-                    <dd class="col-md-8">{{booking.comment}}</dd>
+                    <dt class="col-md-4"><i class="fas fa-hand-holding-usd"></i> Montant total</dt>
+                    <dd class="col-md-8">{{booking.amount  | number_format(2,',',' ' )}} &euro;</dd>
+                    <dt class="col-md-4"><i class="fas fa-comments"></i> Commentaire</dt>
+                    <dd class="col-md-8">{{booking.comment | default('Aucun commentaire !')}}</dd>
                 </dl>
                 <hr>
 
-                <h2 class="alert-heading">Votre hote</h2>
+                <h2 class="alert-heading"><i class="fas fa-user-tie"></i> Votre hote</h2>
 
                 <div class="row">
                     <div class="col-3">
@@ -64,12 +64,35 @@
                 <br>
                 {{author.description | raw}}
 
-                <a href="{{ path("user_show", {'slug': author.slug}) }}" class="btn btn-pill btn-primary">Plus d'info sur {{author.firstName}}</a>
+                <a href="{{ path("user_show", {'slug': author.slug}) }}" class="btn btn-pill btn-primary"><i class="fas fa-search-plus"></i> Plus d'info sur {{author.firstName}}</a>
+            </div>
+
+            <div class="alert alert-light" id="comment">
+                <h2 class="alert-heading">Votre avis compte !</h2>
+                {% if date()> date(booking.endDate) %}
+                    {% set comment = booking.ad.commentFromAuthor(app.user) %}
+                    {% if comment is not null %}
+                        <blockquote>
+                            {{comment.content}}
+                        </blockquote>
+
+                        <strong>Note : </strong>{% include "partials/rating.html.twig" with {'rating' : comment.rating} %}
+                    {% else %}
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <button type="submit" class="btn btn-outline-success"><i class="fas fa-check-circle"></i> Confirmer</button>
+                    {{ form_end(form) }}
+                    {% endif %}
+
+                {% else %}
+                <p>Vous ne pourrez pas noter cette annonce tant que votre voyage ne sera pas complet !</p>
+                
+                {% endif %}
             </div>
         </div>
         <div class="col">
           <div class="alert alert-light">
-            <h2 class="alert_heading">Votre hébergement</h2>
+            <h2 class="alert_heading"><i class="fas fa-home"></i> Votre hébergement</h2>
 
             <h4>
                 <a href="{{ path('ads_show', {'slug': ad.slug}) }}">{{ad.title}}</a><br>
@@ -78,7 +101,7 @@
 
                 {{ad.content | raw}}
 
-                <a href="{{ path('ads_show', {'slug':ad.slug}) }}" class="btn btn-primary">Plus d'informations</a>
+                <a href="{{ path('ads_show', {'slug':ad.slug}) }}" class="btn btn-primary"><i class="fas fa-search-plus"></i> Plus d'informations</a>
             
           </div>  
         </div>

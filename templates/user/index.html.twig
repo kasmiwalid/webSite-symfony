@@ -6,7 +6,7 @@
 
     <div class="container">
     
-        <div class="row align-items-center">
+        <div class="row align-items-center mb-5">
         
             <div class="col-3 text-center">
                 <img src="{{user.picture}}" class="avatar mb-3" alt="avatar de {{user.fullName}}">
@@ -17,8 +17,8 @@
                 <h1>{{user.fullName}}</h1>
                 {% if user is same as (app.user) %}
                 <div class="mt-3">
-                    <a href="{{ path('account_profile') }}" class="btn btn-primary mr-2 mb-2">Modifier mes informations</a>
-                    <a href="{{  path('account_password')}}" class="btn btn-primary mb-2">Modifier mon mot de passe</a>
+                    <a href="{{ path('account_profile') }}" class="btn btn-primary mr-2 mb-2"><i class="fas fa-user-edit"></i> Modifier mes informations</a>
+                    <a href="{{  path('account_password')}}" class="btn btn-primary mb-2"><i class="fas fa-user-edit"></i> Modifier mon mot de passe</a>
 
                 </div>
                 {% endif %}

@@ -2,6 +2,12 @@ div.ad-title h1, div.ad-title p {
     color: white;
     text-shadow: 3px 3px 3px rgba(0,0,0,0.5);
 }
+div.ad-title .btn{
+
+    margin-top: 2em;
+    font-size:1.5em;
+    line-height: 1.5em;
+}
 div.ad-title{
     padding :2em;
     background-size: cover;
@@ -29,7 +35,36 @@ div.carousel-caption{
     max-width: 25px;
     max-height: 25px;
 }
+.avatar-micro{
+    max-width: 24px;
+    max-height: 24px;
+}
 .datepicker table tr td.disabled, .datepicker table tr
 td.disabled:hover {
     color : red !important;
 }
+span.rating i {
+    color:rgb(246, 190, 57);
+}
+.alert a {
+    text-decoration: none;
+}
+.alert .btn {
+    color: honeydew;
+}
+
+.card-header {
+    background-color: rgb(253, 53, 53);
+    
+}
+.fas fa-exclamation-triangle{
+    background-color: rgb(246, 62, 62);
+}
+
+.page-footer  {
+    background-color:rgb(193, 213, 238) ;
+    
+}
+
+
+

@@ -22,14 +22,14 @@
                             {app.user.fullName}}">  {{app.user.fullName}}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labellebdy="accountDropdownLink">
-                        <a href="{{ path('ads_create') }}" class="dropdown-item">Créer une annonce</a>
+                        <a href="{{ path('ads_create') }}" class="dropdown-item"><i class="fas fa-plus-square"></i> Créer une annonce</a>
                         <div class="dropdown-divider"></div>
-                        <a href="{{ path('account_index') }}" class="dropdown-item">Mon compte</a>
-                        <a href="{{ path('account_bookings') }}" class="dropdown-item">Mes réservation</a>
+                        <a href="{{ path('account_index') }}" class="dropdown-item"><i class="fas fa-user-alt"></i> Mon compte</a>
+                        <a href="{{ path('account_bookings') }}" class="dropdown-item"><i class="far fa-calendar-check"></i>  Mes réservation</a>
 
-                        <a href="{{ path('account_profile') }}" class="dropdown-item">Modifier mon profile</a>
+                        <a href="{{ path('account_profile') }}" class="dropdown-item"><i class="fas fa-edit"></i>  Modifier mon profile</a>
                         <div class="dropdown-divider"></div>
-                        <a href="{{ path('account_logout') }}" class="dropdown-item">Déconnexion</a>
+                        <a href="{{ path('account_logout') }}" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>  Déconnexion</a>
                     </div>
                 
               </li>

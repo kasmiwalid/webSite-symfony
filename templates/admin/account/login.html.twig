@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion à l'administration</title>
+     <link rel="stylesheet" href="/css/bootstrap.min.css">
+     <style>
+        body{
+            display:flex;
+            justify-content: center;
+            height: 100vh;
+        }
+        .card{
+            margin-top: 20%;
+        }
+     </style>
+</head>
+<body>
+    <div class="col-md-6">
+    <div class="card bg-dark text-white">
+        <div class="card-header">
+            <h4 class="card-title">
+                <i class="fas fa-lock"> </i> 
+                Connexion à l'administration
+            </h4>
+        </div>
+
+        <div class="card-body">
+        {% if hasError %}
+            <div class="alert alert-warning">
+                <h5>Les informations que vous avez fournies ne sont pas bonnes.</h5>
+            </div>
+        {% endif %}
+            <form method="post">
+                <div class="form-group"><label for="_username" value="{{username}}">Email</label><input type="text" class="form-control" placeholder="Adresse email ..." name="_username"></div>
+                <div class="form-group"><label for="_password">Mot de passe</label><input type="password" class="form-control" placeholder="Mot de passe ..." name="_password"></div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-lock-open"></i>
+                        Connexion
+                    </button>
+                    <a href="{{ path('homepage')}}" class="btn btn-link">
+                        <i class="fas fa-arrow-cricle-left"></i>
+                        Retour au site
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    
+    
+    
+    
+    
+    
+     <script src="https://kit.fontawesome.com/1ce8114d61.js" crossorigin="anonymous"></script>
+</body>
+</html>

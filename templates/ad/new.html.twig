@@ -4,14 +4,47 @@
 {% block body %}
 
     <div class="container">
-        <h1>Créer une nouvelle annonce</h1>
+        <h1 class="my-5"><i class="fas fa-pencil-alt"></i> Créer une nouvelle annonce</h1>
 
        {{form_start(form)}}
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-light">
+                <h2><i class="fas fa-file-alt"></i> Informations générales</h2>
+                <hr>
+                {{form_row(form.title)}}
+                {{form_row(form.slug)}}
+                {{form_row(form.price)}}
+                {{form_row(form.rooms)}}
+            </div>
+            <div class="alert alert-light">
+                <h2><i class="fas fa-pencil-alt"></i> Détails de l'annonce</h2>
+                <hr>
+                 {{form_row(form.introduction)}}
+                 {{form_row(form.content)}}
 
-      {{ form_widget(form)}}
-      <button type="submit" class="btn btn-primary">Créer une nouvelle annonce</button>
+            </div>
+        </div>
+         <div class="col">
+             <div class="alert alert-light">
+                <h2><i class="far fa-images"></i> Images de l'annonce</h2>
+                <hr>
+                    {{form_row(form.coverImage)}}
+                    {{form_row(form.images)}}
+
+             </div>
+        </div>
+     </div>
+
+     <div class="alert alert-warning clearfix">
+     <h2 class="alert-heading"> <i class="fas fa-exclamation-triangle"></i> Sauvgarder mon annonce</h2>
+       <h5>Vous étes sur le point de créer votre annonce, nous sommes super fier de vous </h5>
+        <button type="submit" class="btn btn-primary float-right">
+        <i class="fas fa-check"></i>
+        Créer une nouvelle annonce
+        </button>
       {{ form_end(form)}}
-  
+     </div>
     </div>
 
 {% endblock %}
