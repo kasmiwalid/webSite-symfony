@@ -13,13 +13,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminAdController extends AbstractController
 {
     /**
-     * @Route("/admin/ads", name="admin_ads_index")
+     * @Route("/admin/ads/{page<\d+>?1}", name="admin_ads_index")
      */
-    public function index(AdRepository $repo)
+    public function index(AdRepository $repo, $page)
     {
+        $limit = 10;
+
+        $start = $page * $limit - $limit;
+
+        $total = count($repo->findAll());
+
+        $pages = ceil($total / $limit);
+
         return $this->render('admin/ad/index.html.twig', [
-            'controller_name' => 'AdminAdController',
-            'ads' => $repo->findAll()
+            
+            'ads' => $repo->findBy([], [], $limit, $start),
+            'pages' => $pages,
+            'page' => $page
         ]);
     }
 

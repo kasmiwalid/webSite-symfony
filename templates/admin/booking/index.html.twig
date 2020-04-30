@@ -31,8 +31,8 @@
                     <td>{{booking.duration}}</td>
                      <td>{{booking.amount| number_format(2,',',' ')}} &euro;</td>
                     <td>
-                        <a href="" class="btn btn-primary"><i class="fas fa-pen"></i></a>
-                        <a href="" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        <a href="{{ path('admin_booking_edit',{'id': booking.id})}}" class="btn btn-primary"><i class="fas fa-pen"></i></a>
+                        <a href="{{ path('admin_booking_delete',{'id': booking.id})}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                     </td>
                    
                     
@@ -41,5 +41,23 @@
                 {% endfor %}
             </tbody>
         </table>
+         <div class="d-flex justify-content-center">
+            <ul class="pagination">
+                <li class="page-item {% if page == 1 %} disabled {% endif %}">
+                <a class="page-link" href="{{path('admin_booking_index', {'page': page - 1})}}">&laquo;</a>
+                </li>
+                {% for i in 1..pages %}
+                    
+               
+                <li class="page-item {% if page == i %} active{% endif %}">
+                <a class="page-link" href="{{path('admin_booking_index', {'page': i})}}">{{ i }}</a>
+                </li>
+
+                 {% endfor %}
+                <li class="page-item {% if page == pages %} disabled {% endif %}">
+                <a class="page-link" href="{{path('admin_booking_index', {'page': page + 1})}}">&raquo;</a>
+                </li>
+            </ul>
+        </div>
     </div>
 {% endblock %}

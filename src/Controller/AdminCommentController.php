@@ -13,18 +13,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminCommentController extends AbstractController
 {
     /**
-     * @Route("/admin/comments", name="admin_comment_index")
+     * @Route("/admin/comments/{page<\d+>?1}", name="admin_comment_index")
      */
-    public function index(CommentRepository $repo)
+    public function index(CommentRepository $repo, $page)
     {
         //$repo = $this->getDoctrine()->getRepository(Comment::class);
 
         $comments = $repo->findAll();
+        $limit = 6;
+
+        $start = $page * $limit - $limit;
+
+        $total = count($repo->findAll());
+
+        $pages = ceil($total / $limit);
+
 
 
 
         return $this->render('admin/comment/index.html.twig', [
             'comments' => $comments,
+            'comments' => $repo->findBy([], [], $limit, $start),
+            'pages' => $pages,
+            'page' => $page
         ]);
     }
 
