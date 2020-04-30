@@ -14,8 +14,8 @@ div.ad-title{
     background-position: center center;
 
 }
-div.container {
-    margin-top: 20px;
+div.container, div.container-fluid {
+    margin-top: 20px; 
 }
 div.carousel-caption{
     text-shadow: 3px 3px 3px rgba(0,0,0,0.5);
@@ -50,20 +50,21 @@ span.rating i {
     text-decoration: none;
 }
 .alert .btn {
-    color: honeydew;
+    color: rgb(255, 240, 255);
 }
 
 .card-header {
-    background-color: rgb(253, 53, 53);
+    background-image: linear-gradient(to right, rgba(30, 252, 192, 0), rgb(201, 239, 246));
     
-}
-.fas fa-exclamation-triangle{
-    background-color: rgb(246, 62, 62);
 }
 
+
 .page-footer  {
-    background-color:rgb(193, 213, 238) ;
+    background-image: linear-gradient(to right, rgba(3, 246, 182, 0), rgb(250, 194, 250));
     
+}
+body{
+    background-image: linear-gradient(to right, rgba(3, 246, 182, 0), rgb(162, 222, 208));
 }
 
 

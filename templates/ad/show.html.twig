@@ -14,7 +14,7 @@
            <strong>{{ad.rooms}} chambres</strong> pour <strong>{{ad.price  | number_format(2,',',' ' )}}&euro;
            </strong> par nuit
         </p>
-        <a href="{{ path('booking_create', {'slug': ad.slug}) }}" class="btn btn-primary"><i class="fas fa-check-double"></i> Réserver !</a>&nbsp;
+        <a href="{{ path('booking_create', {'slug': ad.slug}) }}" class="btn " style= "background-color: rgb(102, 204, 153)"><i class="fas fa-check-double" ></i> Réserver !</a>&nbsp;
 
         {% if app.user and app.user == ad.author %}
               <a href="{{ path('ads_edit', {'slug' : ad.slug}) }}" class="btn btn-secondary"><i class="far fa-edit"></i> Modifier l'annonce</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

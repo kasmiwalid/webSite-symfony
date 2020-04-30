@@ -1,5 +1,5 @@
- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="{{ path('homepage')}}">Sym BNB</a>
+ <nav class="navbar navbar-expand-lg " style= "background-color: rgb(162, 222, 208)">
+        <a class="navbar-brand" href="{{ path('homepage')}}" style="color: rgb(31, 58, 147)">Vecation</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -7,29 +7,29 @@
      <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav mr-auto">
                  <li class="nav-item ">
-                    <a class="nav-link" href="{{ path('homepage')}}">Acceuil </a>
+                    <a class="nav-link" href="{{ path('homepage')}}" style="color: rgb(31, 58, 147)">Acceuil </a>
                 </li>
                  <li class="nav-item ">
-                    <a class="nav-link" href="{{ path('ads_index')}}">Annones </a>
+                    <a class="nav-link" href="{{ path('ads_index')}}" style="color: rgb(31, 58, 147)">Annones </a>
                 </li>
          </ul>
          {#le compte dans le navbar !#}
        <ul class="navbar-nav ml-auto">
           {% if app.user %}
-              <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="accountDropdownLink" data-toggle="dropdown">
+              <li class="nav-item dropdown" >
+                    <a href="#" class="nav-link dropdown-toggle" id="accountDropdownLink" data-toggle="dropdown"  style="color: rgb(31, 58, 147)">
                         <img src="{{app.user.picture}}" class="avatar avatar-mini" alt="Avatar de {
                             {app.user.fullName}}">  {{app.user.fullName}}
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labellebdy="accountDropdownLink">
-                        <a href="{{ path('ads_create') }}" class="dropdown-item"><i class="fas fa-plus-square"></i> Créer une annonce</a>
+                    <div class="dropdown-menu dropdown-menu-right " aria-labellebdy="accountDropdownLink" style= "background-color: rgb(22, 160, 133)">
+                        <a href="{{ path('ads_create') }}" class="dropdown-item "><i class="fas fa-plus-square" ></i> Créer une annonce</a>
                         <div class="dropdown-divider"></div>
-                        <a href="{{ path('account_index') }}" class="dropdown-item"><i class="fas fa-user-alt"></i> Mon compte</a>
-                        <a href="{{ path('account_bookings') }}" class="dropdown-item"><i class="far fa-calendar-check"></i>  Mes réservation</a>
+                        <a href="{{ path('account_index') }}" class="dropdown-item"><i class="fas fa-user-alt" ></i> Mon compte</a>
+                        <a href="{{ path('account_bookings') }}" class="dropdown-item"><i class="far fa-calendar-check" ></i>  Mes réservation</a>
 
-                        <a href="{{ path('account_profile') }}" class="dropdown-item"><i class="fas fa-edit"></i>  Modifier mon profile</a>
+                        <a href="{{ path('account_profile') }}" class="dropdown-item"><i class="fas fa-edit" ></i>  Modifier mon profile</a>
                         <div class="dropdown-divider"></div>
-                        <a href="{{ path('account_logout') }}" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>  Déconnexion</a>
+                        <a href="{{ path('account_logout') }}" class="dropdown-item"><i class="fas fa-sign-out-alt" ></i>  Déconnexion</a>
                     </div>
                 
               </li>

@@ -1,7 +1,7 @@
 {% set url = path('ads_show', {'slug': ad.slug}) %}
     <div class="col-md-4">
             <div class="card bg-light mb-3 ">
-                    <div class="card-header text-center text-white">
+                    <div class="card-header text-center " style="color: rgb(4, 147, 114)">
                         {{ ad.rooms }} chambre,<strong>{{ ad.price | number_format(2,',',' ' ) }}&euro; par nuit</strong><br>
 
                         {% if ad.comments|length %}
@@ -20,9 +20,9 @@
                       style="height: 200px; width: 100%; display: block"/>
                     </a>
 
-                    <div class="card-body">
+                    <div class="card-body" style="background-image: linear-gradient(to right, rgba(30, 252, 192, 0), rgb(246, 201, 237))">
                         <h4 class="card-title"> 
-                        <a href="{{ url }}">
+                        <a href="{{ url }}"style="color: rgb(102, 204, 153)" >
                         {{ ad.title}} 
                         </a>
                         </h4>
@@ -31,7 +31,7 @@
                         <p class="card-text">
                          {{ ad.introduction }}
                          </p>
-                        <a href="{{ url }}" class="btn btn-primary float-right"><i class="fas fa-search-plus"></i> En savoir plus ! </a>
+                        <a href="{{ url }}" class="btn  float-right text-white " style= "background-color: rgb(102, 204, 153)" ><i class="fas fa-search-plus"></i> En savoir plus ! </a>
 
                         {% if app.user and app.user == ad.author %}
                         <a href="{{ path('ads_edit', {'slug' : ad.slug}) }}" class="btn btn-secondary">Modifier l'annonce</a>

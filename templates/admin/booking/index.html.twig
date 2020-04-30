@@ -49,7 +49,7 @@
                 {% for i in 1..pages %}
                     
                
-                <li class="page-item {% if page == i %} active{% endif %}">
+                <li class="page-item {% if page == i %} active {% endif %}" >
                 <a class="page-link" href="{{path('admin_booking_index', {'page': i})}}">{{ i }}</a>
                 </li>
 

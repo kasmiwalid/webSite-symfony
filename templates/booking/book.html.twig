@@ -3,6 +3,9 @@
 {% block title %}Réserver l'annonce : {{ad.title}}!{% endblock %}
 
 {% block stylesheets %}
+  {{ encore_entry_link_tags('app') }}
+   <link rel="stylesheet" href="/build/css/bootstrap.css">
+            <link rel="stylesheet" href="/build/css/app.css">
 <link rel="stylesheet" 
 href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9
 .0/css/bootstrap-datepicker.min.css"  />
@@ -16,7 +19,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9
      dites nous tout, on s'occupe du reste !</p>
 
      {{ form_start(form) }}
-     <div class="alert alert-primary ">
+     <div class="alert  " style="background-color: rgb(124, 208, 246)">
         <h3><i class="fas fa-calendar-week"></i> Commencez par nous dire quelles sont les dates qui vous intéressent !</h3>
         <div class="row">
             <div class="col">
@@ -46,6 +49,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9
 </div>
 {% endblock %}
 {% block javascripts %}
+
+  {{ encore_entry_script_tags('app') }}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" ></script>
 
 <script>
